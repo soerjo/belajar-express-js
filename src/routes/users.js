@@ -2,27 +2,10 @@ const express = require("express");
 const router = express.Router();
 const userControler = require("../controllers/users");
 
-//CREATE
-router.post("/users", userControler.createUser);
+// CREATE --> POST: http://localhost:8000/v1/user
+router.post("/user", userControler.createUser);
 
-//READ
+//READ --> GET: http://localhost:8000/v1/users
 router.get("/users", userControler.getAllUsers);
-
-//UPDATE
-router.put("/users", (req, res, next) => {
-  res.json({
-    name: "soerjo hasto",
-    email: "ryohastomo@gmail.com",
-  });
-  next();
-});
-//DELETE
-router.delete("/users", (req, res, next) => {
-  res.json({
-    name: "soerjo hasto",
-    email: "ryohastomo@gmail.com",
-  });
-  next();
-});
 
 module.exports = router;
