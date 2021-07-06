@@ -1,11 +1,9 @@
 const express = require("express");
-
 const app = express();
+const userRoutes = require("./src/routes/users");
 const port = 8000;
 
-app.get("/", (req, res) => {
-  res.send("Shallom jemaat Tuhan");
-});
+app.use("/", userRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
