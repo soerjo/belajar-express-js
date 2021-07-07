@@ -1,6 +1,13 @@
 exports.createUser = (req, res, next) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  console.log("isi req: ", req);
   res.json({
     message: "create user success",
+    data: {
+      name: name,
+      email: email,
+    },
   });
   next();
 };

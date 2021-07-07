@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const userControler = require("../controllers/users");
+const userControler = require("../controllers/usersController");
 
 // CREATE --> POST: http://localhost:8000/v1/user
 router.post("/user", userControler.createUser);
