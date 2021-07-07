@@ -1,9 +1,11 @@
 const express = require("express");
 const multer = require("multer");
 const mongoose = require("mongoose");
+const path = require("path");
 const port = 8000;
 
 const app = express();
+
 const userRoutes = require("./src/routes/usersRoute");
 const authRoutes = require("./src/routes/authRoutes");
 const blogRoutes = require("./src/routes/blogRoutes");
@@ -24,6 +26,8 @@ const fileFilter = (req, file, cb) => {
     cb(null, false);
   }
 };
+
+app.use("/v1/images", express.static(path.join(__dirname, "images")));
 
 app.use(multer({ storage, fileFilter }).single("image"));
 

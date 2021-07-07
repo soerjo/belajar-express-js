@@ -39,3 +39,14 @@ exports.createBlog = (req, res, next) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.getBlog = (req, res, next) => {
+  BlogPost.find()
+    .then((response) => {
+      res.status(200).json({
+        message: "data berhasil terpanggil",
+        data: response,
+      });
+    })
+    .catch((err) => next(err));
+};
