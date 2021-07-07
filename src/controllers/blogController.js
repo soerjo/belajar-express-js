@@ -50,3 +50,22 @@ exports.getBlog = (req, res, next) => {
     })
     .catch((err) => next(err));
 };
+
+exports.getBlogById = (req, res, next) => {
+  //   console.log("isi req.param:", req.params.postId);
+  const { postId } = req.params;
+  BlogPost.findById(postId)
+    .then((result) => {
+      if (!result) {
+        console.log(result);
+        const err = new Error(`blog dengan id ${postId}, tidak ditemukan`);
+        err.errorStatus = 404;
+        throw err;
+      }
+      res.status(200).json({
+        message: `blog dengan id ${postId} di temukan`,
+        data: result,
+      });
+    })
+    .catch((err) => next(err));
+};
